@@ -1,2 +1,3 @@
 # huzz-translator
-translate a word into huzz
+translate ANY word into huzz
+google internship worthy project
