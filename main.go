@@ -10,25 +10,29 @@ import (
 func modifyWord(word string) string {
 	vowels := "aeiouAEIOU"
 	vowelCount := 0
+	firstVowelIndex := -1
 	secondVowelIndex := -1
 
 	for i, char := range word {
 		if strings.ContainsRune(vowels, char) {
-			if secondVowelIndex == -1 || i-secondVowelIndex > 1 {
-				vowelCount++
-				if vowelCount == 2 {
-					secondVowelIndex = i
-					break // Exit the loop after finding the second distinct vowel
-				}
+			vowelCount++
+			if vowelCount == 1 {
+				firstVowelIndex = i
+			}
+			if vowelCount == 2 {
+				secondVowelIndex = i
+				break // Exit the loop after finding the second vowel
 			}
 		}
 	}
-
-	if secondVowelIndex != -1 {
+	
+	if vowelCount >= 2 {
 		return word[:secondVowelIndex] + "uzz"
+	} else if vowelCount == 1 {
+		return word[:firstVowelIndex] + "uzz"
 	}
-
-	return word // Return the original word if there are fewer than 2 vowels
+	
+	return word // Return the original word if there are no vowels
 }
 
 func main() {
