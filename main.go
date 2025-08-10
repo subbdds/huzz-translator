@@ -21,7 +21,7 @@ func modifyWord(word string) string {
 			}
 			if vowelCount == 2 {
 				secondVowelIndex = i
-				break // Exit the loop after finding the second vowel
+				break
 			}
 		}
 	}
@@ -32,7 +32,7 @@ func modifyWord(word string) string {
 		return word[:firstVowelIndex] + "uzz"
 	}
 	
-	return word // Return the original word if there are no vowels
+	return word
 }
 
 func main() {
@@ -52,4 +52,5 @@ func main() {
 	}
 
 	os.Exit(0)
+
 }
